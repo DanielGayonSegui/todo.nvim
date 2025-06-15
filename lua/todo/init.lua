@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local win = nil
 
@@ -65,15 +65,15 @@ local function open_floating_file(opts)
   })
 end
 
-local function config_user_commands(opts)
+local function setup_user_commands(opts)
   opts = vim.tbl_deep_extend("force", default_opts, opts)
   vim.api.nvim_create_user_command("td", function()
     open_floating_file(opts)
   end, {})
 end
 
-M.config = function(opts)
-  config_user_commands(opts)
+M.setup = function(opts)
+  setup_user_commands(opts)
 end
 
 return M
